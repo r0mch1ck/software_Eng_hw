@@ -31,6 +31,3 @@ jobs:
             ./main tests/input_$i.txt tests/output_$i.txt
             diff tests/output_$i.txt tests/test_output_$i.txt || (echo "Test case $i failed!" && exit 1)
           done
-
-      - name: Clean up outputs
-        run: rm -f tests/output_*.txt

@@ -7,21 +7,31 @@
 #define LINE_SIZE 1024
 #define MAX_NUMBERS 10000
 
-int main(int argc, char *argv[]) {
-    if (argc != 3) {
-        fprintf(stderr, "Usage: %s <input file> <output file>\n", argv[0]);
+int main() {
+    char input_filename[256];
+    char output_filename[256];
+
+    printf("Enter the name of the input file: ");
+    if (scanf("%255s", input_filename) != 1) {
+        fprintf(stderr, "Error reading the input file name.\n");
         return 1;
     }
 
-    FILE *input_file = fopen(argv[1], "r");
+    printf("Enter the name of the output file: ");
+    if (scanf("%255s", output_filename) != 1) {
+        fprintf(stderr, "Error reading the output file name.\n");
+        return 1;
+    }
+
+    FILE *input_file = fopen(input_filename, "r");
     if (!input_file) {
-        fprintf(stderr, "Error opening the input file: %s\n", argv[1]);
+        fprintf(stderr, "Error opening the input file.\n");
         return 1;
     }
 
-    FILE *output_file = fopen(argv[2], "w");
+    FILE *output_file = fopen(output_filename, "w");
     if (!output_file) {
-        fprintf(stderr, "Error opening the output file: %s\n", argv[2]);
+        fprintf(stderr, "Error opening the output file.\n");
         fclose(input_file);
         return 1;
     }
@@ -47,7 +57,7 @@ int main(int argc, char *argv[]) {
     fclose(input_file);
     fclose(output_file);
 
-    printf("Processing completed. Results saved to file %s\n", argv[2]);
+    printf("Processing completed. Results saved to file %s\n", output_filename);
 
     return 0;
 }
