@@ -1,0 +1,36 @@
+name: C CI with Multiple Test Cases
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install GCC
+        run: sudo apt-get install -y gcc
+
+      - name: Install Make
+        run: sudo apt-get install -y make
+
+      - name: Build the project
+        run: |
+          gcc -o main main.c processing.c io.c
+          echo "Build successful"
+
+      - name: Run multiple tests
+        run: |
+          for i in {1..5}; do
+            echo "Running test case $i"
+            ./main < tests/input_$i.txt > tests/output_$i.txt
+            diff tests/output_$i.txt tests/test_output_$i.txt || (echo "Test case $i failed!" && exit 1)
+          done
