@@ -31,6 +31,6 @@ jobs:
         run: |
           for i in {1..5}; do
             echo "Running test case $i"
-            ./main < tests/input_$i.txt > tests/output_$i.txt
+            ./main tests/input_$i.txt tests/output_$i.txt
             diff tests/output_$i.txt tests/test_output_$i.txt || (echo "Test case $i failed!" && exit 1)
           done
