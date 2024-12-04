@@ -1,8 +1,6 @@
-//
-// Created by Roman Kovalev on 04.12.2024.
-//
+#ifndef UNIT_TESTS_H
+#define UNIT_TESTS_H
 
-#ifndef SOFTWARE_ING_UNIT_TESTS_H
-#define SOFTWARE_ING_UNIT_TESTS_H
+int run_unit_tests();
 
-#endif //SOFTWARE_ING_UNIT_TESTS_H
+#endif // UNIT_TESTS_H

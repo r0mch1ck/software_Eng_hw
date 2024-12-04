@@ -1,8 +1,9 @@
 #ifndef PROCESSING_H
 #define PROCESSING_H
 
-void extract_numbers_and_spaces(const char *line, int *numbers, int *spaces, int *num_count, int *space_count);
-void sort_numbers_ends_7(int *numbers, int count);
-void combine_spaces_with_numbers(const int *numbers, const int *spaces, int num_count, int space_count, char *result);
+void extract_numbers_ends_7(const int *numbers, int num_count, int *output, int *output_count);
+void asc_sort(int *arr, int size);
+void replace_sorted_numbers(int *numbers, int num_count, const int *sorted_numbers, int sorted_count);
+int parse_numbers(const char *line, int *numbers);
 
 #endif // PROCESSING_H

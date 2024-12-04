@@ -7,6 +7,8 @@ add_executable(Software_ing
         main.c
         io.c
         processing.c
+        unit_tests.c
+        unit_tests.h
 )
 
 include_directories(${CMAKE_SOURCE_DIR})

@@ -21,8 +21,13 @@ jobs:
 
       - name: Build the project
         run: |
-          gcc -o main main.c processing.c io.c
+          gcc -o main main.c processing.c io.c unit_tests.c
           echo "Build successful"
+
+      - name: Run unit tests
+        run: |
+          ./main
+        continue-on-error: false
 
       - name: Run multiple tests
         run: |
