@@ -11,7 +11,7 @@
 
 int run_unit_tests() {
     
-    FILE *file = fopen("../tests/unit_test_input.txt", "r");
+    FILE *file = fopen("tests/unit_test_input.txt", "r");
     if (!file) {
         printf("Ошибка открытия файла unit_test_input.txt\n");
         return 1;
@@ -63,7 +63,7 @@ int run_unit_tests() {
     assert(numbers3[5] == 7);
 
     
-    FILE *output_file = fopen("../tests/unit_test_output.txt", "w+");
+    FILE *output_file = fopen("tests/unit_test_output.txt", "w+");
     int numbers4[] = {7, 14, 27, 5};
     write_line(output_file, numbers4, 4);
     rewind(output_file);
