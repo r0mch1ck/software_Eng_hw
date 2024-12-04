@@ -11,10 +11,12 @@ int main(int argc, char *argv[]) {
         printf("Ошибка при выполнении юнит тестов.\n");
         return 1;
     }
+
     if (argc != 3) {
         fprintf(stderr, "Usage: %s <input file> <output file>\n", argv[0]);
-        return 1;
+        return 0;
     }
+
 
     FILE *input_file = open_file(argv[1], "r");
     FILE *output_file = open_file(argv[2], "w");
