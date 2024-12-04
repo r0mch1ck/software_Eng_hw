@@ -73,6 +73,6 @@ int run_unit_tests() {
     fclose(output_file);
 
 
-    printf("Unit tests passed!\n");
+    // printf("Unit tests passed!\n");
     return 0;
 }
