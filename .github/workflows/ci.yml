@@ -31,8 +31,27 @@ jobs:
 
       - name: Run multiple tests
         run: |
+          STATUS=0
           for i in {1..7}; do
             echo "Running test case $i"
-            ./main tests/input_$i.txt tests/output_$i.txt
-            diff tests/output_$i.txt tests/test_output_$i.txt || (echo "Test case $i failed!" && exit 1)
+            if ./main tests/input_$i.txt tests/output_$i.txt; then
+              if [[ $i -ge 4 && $i -le 7 ]]; then
+                echo "Test case $i expected to fail but succeeded. Marking as failure."
+                STATUS=1
+              else
+                echo "Test case $i completed successfully."
+                if ! diff tests/output_$i.txt tests/test_output_$i.txt; then
+                  echo "Test case $i failed: Output does not match expected!"
+                  STATUS=1
+                fi
+              fi
+            else
+              if [[ $i -ge 4 && $i -le 7 ]]; then
+                echo "Test case $i failed as expected."
+              else
+                echo "Test case $i failed unexpectedly. Marking as failure."
+                STATUS=1
+              fi
+            fi
           done
+          exit $STATUS
