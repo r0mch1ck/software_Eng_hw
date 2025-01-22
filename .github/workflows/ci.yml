@@ -26,12 +26,12 @@ jobs:
 
       - name: Run unit tests
         run: |
-          ./main
+          ./main cmake-build-debug/input.txt cmake-build-debug/o.txt
         continue-on-error: false
 
       - name: Run multiple tests
         run: |
-          for i in {1..5}; do
+          for i in {1..7}; do
             echo "Running test case $i"
             ./main tests/input_$i.txt tests/output_$i.txt
             diff tests/output_$i.txt tests/test_output_$i.txt || (echo "Test case $i failed!" && exit 1)
