@@ -15,7 +15,8 @@ typedef enum {
     ERROR_INVALID_INPUT = 3,
     ERROR_OUT_OF_RANGE = 4,
     ERROR_TOO_MANY_NUMBERS = 5,
-    ERROR_SIZE = 6
+    ERROR_SIZE = 6,
+    ERROR_INVALID_COUNT = 7
 } ErrorCode;
 
 #endif // ERROR_CODES_H

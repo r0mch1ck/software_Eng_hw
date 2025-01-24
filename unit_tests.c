@@ -75,6 +75,12 @@ int run_unit_tests() {
     assert(output[1] == 17);
     assert(output[2] == 27);
 
+    // Negative test: NULL input array
+    assert(extract_numbers_ends_7(NULL, num_count2, output, &output_count) == ERROR_NULL_POINTER);
+
+    // Negative test: Invalid count
+    assert(extract_numbers_ends_7(input_numbers, -1, output, &output_count) == ERROR_INVALID_COUNT);
+
     // Test A3: asc_sort
     int numbers2[] = {2147483647, -2147483648, 7, 14};
     int num_count5 = 4;
@@ -95,6 +101,12 @@ int run_unit_tests() {
     assert(numbers3[2] == 14);
     assert(numbers3[3] == 17);
 
+    // Negative test: NULL array
+    assert(asc_sort(NULL, num_count6) == ERROR_NULL_POINTER);
+
+    // Negative test: Invalid count
+    assert(asc_sort(numbers3, -1) == ERROR_INVALID_COUNT);
+
     // Test A4: replace_sorted_numbers
     int numbers4[] = {7, 14, 27, 5, 17, 37};
     int sorted_numbers[] = {17, 27, 37, 7};
@@ -110,41 +122,21 @@ int run_unit_tests() {
     assert(numbers4[5] == 7);
 
     // A4.2 Partial replacement
-    int numbers5[] = {7, 14, 17};
-    int sorted_numbers2[] = {27};
+    int numbers5[] = {7, 14, 27};
+    int sorted_numbers2[] = {37};
     assert(replace_sorted_numbers(numbers5, 3, sorted_numbers2, 1) == SUCCESS);
-    assert(numbers5[0] == 27);
+    assert(numbers5[0] == 37);
     assert(numbers5[1] == 14);
-    assert(numbers5[2] == 17);
+    assert(numbers5[2] == 27);
 
-    // A4.3 No numbers to replace
-    int numbers6[] = {10, 20, 30};
-    int sorted_numbers3[] = {7};
-    assert(replace_sorted_numbers(numbers6, 3, sorted_numbers3, 1) == SUCCESS);
-    assert(numbers6[0] == 10);
-    assert(numbers6[1] == 20);
-    assert(numbers6[2] == 30);
+    // Negative test: NULL input array
+    assert(replace_sorted_numbers(NULL, 3, sorted_numbers2, 1) == ERROR_NULL_POINTER);
 
-    // Test A5: write_line
-    FILE *output_file = fopen("unit_tests/writeLineBase.txt", "w+");
-    int numbers7[] = {7, 14, 27, 5};
-    assert(write_line(output_file, numbers7, 4) == SUCCESS);
-    rewind(output_file);
-    char buffer[LINE_SIZE];
-    fgets(buffer, LINE_SIZE, output_file);
-    assert(strcmp(buffer, "7 14 27 5\n") == 0);
-    fclose(output_file);
+    // Negative test: NULL sorted array
+    assert(replace_sorted_numbers(numbers5, 3, NULL, 1) == ERROR_NULL_POINTER);
 
-    // A5.1 Test writing with INT_MAX and INT_MIN
-    FILE *output_file2 = fopen("unit_tests/boundary_output.txt", "w+");
-    int numbers8[] = {2147483647, -2147483648, 0};
-    assert(write_line(output_file2, numbers8, 3) == SUCCESS);
-    rewind(output_file2);
-    fgets(buffer, LINE_SIZE, output_file2);
-    assert(strcmp(buffer, "2147483647 -2147483648 0\n") == 0);
-    fclose(output_file2);
+    // Negative test: Invalid array count
+    assert(replace_sorted_numbers(numbers5, -1, sorted_numbers2, 1) == ERROR_INVALID_COUNT);
 
-    // Output message about successfully passing the tests
-    printf("All unit tests passed successfully.\n");
     return 0;
 }

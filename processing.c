@@ -6,6 +6,8 @@ ErrorCode extract_numbers_ends_7(const int *numbers, int num_count, int *output,
         return ERROR_NULL_POINTER;
     }
 
+    if (num_count < 0) return ERROR_INVALID_COUNT;
+
     *output_count = 0;
     for (int i = 0; i < num_count; i++) {
         if (abs(numbers[i]) % 10 == 7) {
@@ -21,8 +23,8 @@ ErrorCode asc_sort(int *arr, int size) {
         return ERROR_NULL_POINTER;
     }
 
-    if (size <= 0) {
-        return ERROR_SIZE;
+    if (size < 0) {
+        return ERROR_INVALID_COUNT;
     }
 
     for (int i = 0; i < size - 1; i++) {
@@ -42,6 +44,8 @@ ErrorCode replace_sorted_numbers(int *numbers, int num_count, const int *sorted_
     if (numbers == NULL || sorted_numbers == NULL) {
         return ERROR_NULL_POINTER;
     }
+
+    if (num_count < 0 || sorted_count < 0) return ERROR_INVALID_COUNT;
 
     int sorted_index = 0;
     for (int i = 0; i < num_count; i++) {
