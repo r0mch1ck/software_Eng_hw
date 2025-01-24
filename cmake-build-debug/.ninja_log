@@ -56,3 +56,10 @@
 177	529	7592332634252049	Software_ing.exe	4411b427d68d110c
 4	244	7592333843203542	CMakeFiles/Software_ing.dir/main.c.obj	bdb64ec5838a7653
 245	546	7592333845898281	Software_ing.exe	4411b427d68d110c
+5	3433	7594095438310928	CMakeFiles/Software_ing.dir/main.c.obj	bdb64ec5838a7653
+3434	4482	7594095448646962	Software_ing.exe	4411b427d68d110c
+46	1738	7594097777869779	CMakeFiles/Software_ing.dir/processing.c.obj	5efa3e885670008c
+19	1741	7594097777914952	CMakeFiles/Software_ing.dir/unit_tests.c.obj	4447984e2a06c79a
+34	1751	7594097777889775	CMakeFiles/Software_ing.dir/io.c.obj	875c23cd1bc2c438
+6	1757	7594097777879776	CMakeFiles/Software_ing.dir/main.c.obj	bdb64ec5838a7653
+1758	2312	7594097783393137	Software_ing.exe	4411b427d68d110c
