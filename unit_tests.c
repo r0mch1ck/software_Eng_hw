@@ -11,7 +11,7 @@
 
 int run_unit_tests() {
     // Test A1: read_line
-    FILE *file = fopen("unit_tests//readLineBase.txt", "r");
+    FILE *file = fopen("unit_tests/readLineBase.txt", "r");
     if (!file) {
         printf("Error opening file readLineBase.txt\n");
         return 1;
@@ -28,7 +28,7 @@ int run_unit_tests() {
     assert(numbers[3] == 5);
 
     // A1.2 Check reading a line with INT_MAX and INT_MIN
-    FILE *file2 = fopen("unit_tests//boundary_values.txt", "r");
+    FILE *file2 = fopen("unit_tests/boundary_values.txt", "r");
     assert(file2 != NULL);
     assert(read_line(file2, numbers, &num_count, MAX_NUMBERS) == SUCCESS);
     assert(num_count == 2);
@@ -37,7 +37,7 @@ int run_unit_tests() {
     fclose(file2);
 
     // A1.3 Check a line with 10,001 numbers (overflow test)
-    FILE *file3 = fopen("unit_tests//overflow_test.txt", "r");
+    FILE *file3 = fopen("unit_tests/overflow_test.txt", "r");
     assert(file3 != NULL);
     assert(read_line(file3, numbers, &num_count, MAX_NUMBERS) == ERROR_TOO_MANY_NUMBERS);  // Overflow limit
     fclose(file3);
@@ -126,7 +126,7 @@ int run_unit_tests() {
     assert(numbers6[2] == 30);
 
     // Test A5: write_line
-    FILE *output_file = fopen("unit_tests//writeLineBase.txt", "w+");
+    FILE *output_file = fopen("unit_tests/writeLineBase.txt", "w+");
     int numbers7[] = {7, 14, 27, 5};
     assert(write_line(output_file, numbers7, 4) == SUCCESS);
     rewind(output_file);
@@ -136,7 +136,7 @@ int run_unit_tests() {
     fclose(output_file);
 
     // A5.1 Test writing with INT_MAX and INT_MIN
-    FILE *output_file2 = fopen("unit_tests//boundary_output.txt", "w+");
+    FILE *output_file2 = fopen("unit_tests/boundary_output.txt", "w+");
     int numbers8[] = {2147483647, -2147483648, 0};
     assert(write_line(output_file2, numbers8, 3) == SUCCESS);
     rewind(output_file2);
